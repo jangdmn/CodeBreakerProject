@@ -1,3 +1,7 @@
+ let answer = document.getElementById('answer');
+ let answer = document.getElementById('attempt');
+ 
+ function guess() {
  let input = document.getElementById('user-guess');
 
     if(answer.value == "" || attempt.value == '') {
