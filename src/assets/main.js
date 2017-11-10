@@ -3,31 +3,31 @@ let attempt = document.getElementById('attempt');
 
 function guess() {
     let input = document.getElementById('user-guess');
-    if (answer.value == "" || attempt.value == "") {
-    	setHiddenFields;
-    }
-}
 
-if(!validateInput(input.value)) {
-	return;
+    if(answer.value == "" || attempt.value == '') {
+    	setHiddenFields;
+	} 
+	
+	if(!validateInput(input.value)) {
+		return;
 	}
 	attempt.value++; 
 
+
 	if (getResults(input.value)) {
-		setMessage ("You Win! :)");
+		setMessage ('You Win! :)');
 		showAnswer(true);
 		showReplay();
 	} else if (attempt.value >= 10) {
-		setMessage ("You Lose! :(")
+		setMessage ('You Lose! :(')
 		showAnswer(false)
 		showReplay;
 	} else {
-		setMessage ("Incorrect, try again.")
+		setMessage ('Incorrect, try again.')
 	}
 }
 
-
-function getResults (input) {
+function getResults(input) {
 	let html = "<div class="row"><span class="col-md-6">' + input + '</span><div class="col-md-6">";
 	for (i = 0; i < input.length, i++) {
 		if (input.charAt (i) == answer.value.charAt(i)) {
@@ -38,7 +38,7 @@ function getResults (input) {
 			html += "<span class="glyphicon glyphicon-remove"></span>"
 		}
 	}
-	html += "</div></div>"; 
+	html += '</div></div>'; 
 	document.getElementById("results").innerHTML += html;
 	if (input == answer.value){
 		return true
@@ -57,28 +57,28 @@ function setHiddenFields () {
 }
 
 function setMessage(message) {
-	document.getElementById("message").innerHTML = message;
+	document.getElementById('message').innerHTML = message;
 
 }
 
 function showAnswer () {
-	let code = document.getElementById("code");
+	let code = document.getElementById('code');
 	if(success) {
-		code.classname += " success";
+		code.classname += ' success';
 	} else {
-		code.classname += " failure";
+		code.classname += ' failure';
 	}
 	code.innerHTML = answer.value;
 }
 
 function showReplay () {
-	document.getElementById("guessing-div").style.display = "none";
-	document.getElementById("replay-div").style.display = "block";
+	document.getElementById("guessing-div").style.display = 'none';
+	document.getElementById("replay-div").style.display = 'block';
 }
 
 function validateInput(input) {
-	if (input.length != 4)
-		setMessage("Guesses must be exactly 4 Characters long.");
+	if (input.length != 4) {
+		setMessage('Guesses must be exactly 4 Characters long.');
 		return false;
 	}
 	return true;
